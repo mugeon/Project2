@@ -13,7 +13,7 @@
   </joint>
 
   <link name='chassis'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0.05 0 0 0</pose>
 
     <inertial>
       <mass value="15.0"/>
@@ -26,57 +26,56 @@
     </inertial>
 
     <collision name='collision'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <origin xyz="0 0 0" rpy=" 0 1.5707 0"/> 
       <geometry>
-        <box size=".4 .2 .1"/>
+        <cylinder radius=".05" length=".2"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
-      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <origin xyz="0 0 0" rpy=" 0 1.5707 0"/>
       <geometry>
-        <box size=".4 .2 .1"/>
+        <cylinder radius=".05" length=".2"/>
       </geometry>
     </visual>
-
-
+    
     <collision name='back_caster_collision'>
-      <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.06 0 -0.02" rpy=" 0 0 0"/>
       <geometry>
-        <sphere radius="0.0499"/>
+        <sphere radius="0.02"/>
       </geometry>
     </collision>
 
     <visual name='back_caster_visual'>
-      <origin xyz="-0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="-0.06 0 -0.02" rpy=" 0 0 0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.02"/>
       </geometry>
     </visual>
 
     <collision name='front_caster_collision'>
-      <origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.06 0 -0.02" rpy=" 0 0 0"/>
       <geometry>
-        <sphere radius="0.0499"/>
+        <sphere radius="0.02"/>
       </geometry>
     </collision>
 
     <visual name='front_caster_visual'>
-      <origin xyz="0.15 0 -0.05" rpy=" 0 0 0"/>
+      <origin xyz="0.06 0 -0.02" rpy=" 0 0 0"/>
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.02"/>
       </geometry>
     </visual>
 
   </link>
   
   <gazebo reference="chassis">
-    <material>Gazebo/Blue</material>
+    <material>Gazebo/Yellow</material>
   </gazebo>
 
   
   <link name='left_wheel'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0.05 0 0 0</pose>
     
     <inertial>
       <mass value="5.0"/>
@@ -91,25 +90,25 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder radius=".1" length=".05"/>
+        <cylinder radius=".05" length=".03"/>
       </geometry>
     </collision>
 
     <visual name='left_wheel_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".1" length=".05"/>
+        <cylinder radius=".05" length=".03"/>
       </geometry>
     </visual>
   </link>
   
   <gazebo reference="left_wheel">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/Purple</material>
   </gazebo>
 
   
   <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0 0.15 0" rpy="0 0 0"/>
+    <origin xyz="0 0.065 0" rpy="0 0 0"/>
     <child link="left_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -118,7 +117,7 @@
   </joint>
   
   <link name='right_wheel'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0.05 0 0 0</pose>
 
     <inertial>
       <mass value="5.0"/>
@@ -133,25 +132,25 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/> 
       <geometry>
-        <cylinder radius=".1" length=".05"/>
+        <cylinder radius=".05" length=".03"/>
       </geometry>
     </collision>
 
     <visual name='right_wheel_visual'>
       <origin xyz="0 0 0" rpy=" 0 1.5707 1.5707"/>
       <geometry>
-        <cylinder radius=".1" length=".05"/>
+        <cylinder radius=".05" length=".03"/>
       </geometry>
     </visual>
   </link>
   
   <gazebo reference="right_wheel">
-    <material>Gazebo/Green</material>
+    <material>Gazebo/Purple</material>
   </gazebo>
 
   
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="0 -0.065 0" rpy="0 0 0"/>
     <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -160,7 +159,7 @@
   </joint>
   
   <link name='camera'>
-    <pose>0 0 0.1 0 0 0</pose>
+    <pose>0 0 0.05 0 0 0</pose>
 
     <inertial>
       <mass value="0.1"/>
@@ -189,12 +188,12 @@
   </link>
   
   <gazebo reference="camera">
-    <material>Gazebo/Red</material>
+    <material>Gazebo/Orange</material>
   </gazebo>
 
   
   <joint type="fixed" name="camera_joint">
-    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+    <origin xyz="0.1 0 0" rpy="0 0 0"/>
     <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -232,7 +231,7 @@
   </link>
   
   <joint type="fixed" name="hokuyo_joint">
-    <origin xyz="0.15 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0.05 0 0.07" rpy="0 0 0"/>
     <child link="hokuyo"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
